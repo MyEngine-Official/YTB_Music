@@ -1,0 +1,51 @@
+name: Publish NuGet Templates
+
+on:
+  push:
+    branches:
+      - YTB-Master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Set package version
+        shell: pwsh
+        run: |
+          $version = "1.0.$env:GITHUB_RUN_NUMBER"
+          "PACKAGE_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append
+          Write-Host "Publishing version: $version"
+
+      - name: Pack NuGet templates
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path artifacts
+          nuget pack YTBHybrid.nuspec -Version $env:PACKAGE_VERSION -OutputDirectory artifacts
+          nuget pack YTBHybrid.Blank.nuspec -Version $env:PACKAGE_VERSION -OutputDirectory artifacts
+
+      - name: Push packages to NuGet.org
+        shell: pwsh
+        run: |
+          nuget push artifacts\*.nupkg `
+            -Source https://api.nuget.org/v3/index.json `
+            -ApiKey $env:NUGET_API_KEY `
+            -SkipDuplicate
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
