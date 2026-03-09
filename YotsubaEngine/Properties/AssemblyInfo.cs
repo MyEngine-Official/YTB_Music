@@ -1,3 +1,3 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("SandBoxGame.Core")]
+[assembly: InternalsVisibleTo("YtbMusic.Core")]

@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "YtbMusic (DesktopGL)",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/YtbMusic.DesktopGL/YtbMusic.DesktopGL.csproj",
+            "preLaunchTask": "Build: YtbMusic.DesktopGL"
+        },
+        {
+            "name": "YtbMusic (DesktopVK)",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/YtbMusic.DesktopVK/YtbMusic.DesktopVK.csproj",
+            "preLaunchTask": "Build: YtbMusic.DesktopVK"
+        },
+        {
+            "name": "YtbMusic (WindowsDX12)",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/YtbMusic.WindowsDX12/YtbMusic.WindowsDX12.csproj",
+            "preLaunchTask": "Build: YtbMusic.WindowsDX12"
+        },
+        {
+            "name": "YtbMusic (Android / iOS)",
+            "type": "maui",
+            "request": "launch",
+            "preLaunchTask": "maui: Build"
+        }
+    ]
+}

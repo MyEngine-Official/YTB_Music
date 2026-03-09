@@ -95,8 +95,8 @@ namespace YotsubaEngine.Core.YotsubaGame
         public static string DevelopmentAssetsPath { get; set; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets");
 
         /// <summary>
-        /// Ruta al proyecto de compilación de contenido (SandBoxGame.Content.csproj).
-        /// <para>Path to the content build project (SandBoxGame.Content.csproj).</para>
+        /// Ruta al proyecto de compilación de contenido (YtbMusic.Content.csproj).
+        /// <para>Path to the content build project (YtbMusic.Content.csproj).</para>
         /// </summary>
         public static string ContentProjectPath { get; set; } = FindContentProjectPath();
 
@@ -114,19 +114,19 @@ namespace YotsubaEngine.Core.YotsubaGame
 
         /// <summary>
         /// Intenta encontrar el proyecto de compilación de contenido de forma automática.
-        /// Busca en la estructura estándar del motor: ../../../SandBoxGame/SandBoxGame.Content/SandBoxGame.Content.csproj
+        /// Busca en la estructura estándar del motor: ../../../YtbMusic/YtbMusic.Content/YtbMusic.Content.csproj
         /// </summary>
         private static string FindContentProjectPath()
         {
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
             
-            // Intentar encontrar el proyecto de forma relativa (desde bin/Debug/net9.0/ -> ../../../SandBoxGame/SandBoxGame.Content/)
+            // Intentar encontrar el proyecto de forma relativa (desde bin/Debug/net9.0/ -> ../../../YtbMusic/YtbMusic.Content/)
             string[] possiblePaths = new[]
             {
-                Path.Combine(baseDir, "..", "..", "..", "SandBoxGame", "SandBoxGame.Content", "SandBoxGame.Content.csproj"),
-                Path.Combine(baseDir, "..", "..", "SandBoxGame", "SandBoxGame.Content", "SandBoxGame.Content.csproj"),
-                Path.Combine(baseDir, "..", "SandBoxGame", "SandBoxGame.Content", "SandBoxGame.Content.csproj"),
-                Path.Combine(baseDir, "SandBoxGame.Content", "SandBoxGame.Content.csproj")
+                Path.Combine(baseDir, "..", "..", "..", "YtbMusic", "YtbMusic.Content", "YtbMusic.Content.csproj"),
+                Path.Combine(baseDir, "..", "..", "YtbMusic", "YtbMusic.Content", "YtbMusic.Content.csproj"),
+                Path.Combine(baseDir, "..", "YtbMusic", "YtbMusic.Content", "YtbMusic.Content.csproj"),
+                Path.Combine(baseDir, "YtbMusic.Content", "YtbMusic.Content.csproj")
             };
 
             foreach (var path in possiblePaths)
@@ -139,7 +139,7 @@ namespace YotsubaEngine.Core.YotsubaGame
             }
 
             // Si no se encuentra, devolver una ruta por defecto (esto generará un error más adelante, pero es intencional)
-            return Path.Combine(baseDir, "SandBoxGame.Content", "SandBoxGame.Content.csproj");
+            return Path.Combine(baseDir, "YtbMusic.Content", "YtbMusic.Content.csproj");
         }
 
         /// <summary>

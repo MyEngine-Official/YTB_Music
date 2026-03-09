@@ -1,0 +1,27 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="YTB" />
+  </Configurations>
+  <Folder Name="/Platforms/">
+    <Project Path="YtbMusic.Android/YtbMusic.Android.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="YtbMusic.DesktopGL/YtbMusic.DesktopGL.csproj" />
+    <Project Path="YtbMusic.DesktopVK/YtbMusic.DesktopVK.csproj" />
+    <Project Path="YtbMusic.iOS/YtbMusic.iOS.csproj">
+      <Deploy Solution="YTB|*" />
+    </Project>
+    <Project Path="YtbMusic.WindowsDX12/YtbMusic.WindowsDX12.csproj" />
+  </Folder>
+  <Folder Name="/YotsubaEngine/">
+    <Project Path="../YotsubaEngine/YotsubaEngine.csproj" />
+    <Project Path="../YTBContentBuilder/YTBContentBuilder.csproj" Id="e5a9f17e-eb06-43ba-95c1-033dec5340af" />
+  </Folder>
+  <Folder Name="/Platforms/AssetBuilder/">
+    <Project Path="YtbMusic.Content/YtbMusic.Content.csproj" />
+  </Folder>
+  <Project Path="YtbMusic.Core/YtbMusic.Core.csproj" />
+
+</Solution>

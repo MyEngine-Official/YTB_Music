@@ -47,7 +47,7 @@ Los archivos `.fx` (shaders) necesitan ser compilados por el Content Pipeline de
 
 ```bash
 # Navegar a la carpeta del Content
-cd YotsubaEngine/SandBoxGame/SandBoxGame.Content
+cd YotsubaEngine/YtbMusic/YtbMusic.Content
 
 # Construir el contenido
 dotnet mgcb Content.mgcb
@@ -92,7 +92,7 @@ Edita el archivo `Content.mgcb` y agrega las siguientes líneas:
 ## Estructura de Carpetas Recomendada
 
 ```
-SandBoxGame.Content/
+YtbMusic.Content/
 ├── Content.mgcb
 ├── Shaders/
 │   ├── Grayscale.fx
@@ -121,21 +121,21 @@ Los archivos `.fx` deben estar en el proyecto de contenido. Hay dos opciones:
 ### Opción A: Copiar manualmente
 ```bash
 # Copiar desde YotsubaEngine al proyecto de contenido
-cp YotsubaEngine/Graphics/Shaders/*.fx SandBoxGame.Content/Shaders/
+cp YotsubaEngine/Graphics/Shaders/*.fx YtbMusic.Content/Shaders/
 ```
 
 ### Opción B: Usar links simbólicos (recomendado para desarrollo)
 ```bash
 # En Linux/macOS
-ln -s ../../YotsubaEngine/Graphics/Shaders/*.fx SandBoxGame.Content/Shaders/
+ln -s ../../YotsubaEngine/Graphics/Shaders/*.fx YtbMusic.Content/Shaders/
 
 # En Windows (cmd como administrador)
-mklink /D SandBoxGame.Content\Shaders ..\..\YotsubaEngine\Graphics\Shaders
+mklink /D YtbMusic.Content\Shaders ..\..\YotsubaEngine\Graphics\Shaders
 ```
 
 ### Opción C: Agregar al .csproj (automático)
 
-Edita `SandBoxGame.Content.csproj` y agrega:
+Edita `YtbMusic.Content.csproj` y agrega:
 
 ```xml
 <ItemGroup>

@@ -77,7 +77,7 @@ namespace YotsubaEngine.Core.System.YotsubaEngineCore
         /// <summary>
         /// Lógica interna asíncrona que maneja el proceso completo de compilación.
         /// Flujo:
-        /// 1. Compilar el proyecto SandBoxGame.Content.csproj (genera el ejecutable del compilador)
+        /// 1. Compilar el proyecto YtbMusic.Content.csproj (genera el ejecutable del compilador)
         /// 2. Ejecutar ese ejecutable con los argumentos correctos para compilar los assets
         /// </summary>
         private static async Task RebuildAsync(Action fn)
@@ -105,10 +105,10 @@ namespace YotsubaEngine.Core.System.YotsubaEngineCore
             EngineUISystem.SendLog($"[HotReload] Plataforma detectada: {platform}");
 
             // ═══════════════════════════════════════════════════════════════
-            // PASO 2: COMPILAR EL PROYECTO SandBoxGame.Content
+            // PASO 2: COMPILAR EL PROYECTO YtbMusic.Content
             // ═══════════════════════════════════════════════════════════════
             
-            EngineUISystem.SendLog("[HotReload] Paso 1/2: Compilando proyecto SandBoxGame.Content...");
+            EngineUISystem.SendLog("[HotReload] Paso 1/2: Compilando proyecto YtbMusic.Content...");
 
             bool buildSuccess = await BuildContentProject(contentProjectPath, contentProjectDir);
             
@@ -152,7 +152,7 @@ namespace YotsubaEngine.Core.System.YotsubaEngineCore
         }
 
         /// <summary>
-        /// Compila el proyecto SandBoxGame.Content.csproj usando dotnet build.
+        /// Compila el proyecto YtbMusic.Content.csproj usando dotnet build.
         /// </summary>
         private static async Task<bool> BuildContentProject(string projectPath, string workingDirectory)
         {
@@ -200,14 +200,14 @@ namespace YotsubaEngine.Core.System.YotsubaEngineCore
         }
 
         /// <summary>
-        /// Ejecuta el compilador de assets generado por SandBoxGame.Content.
+        /// Ejecuta el compilador de assets generado por YtbMusic.Content.
         /// Según BuildContent.targets:
         /// - Argumentos: build -p {Platform} -s {SourceDir} -o {OutputDir} -i {IntermediateDir}
         /// </summary>
         private static async Task<bool> RunContentCompiler(string contentProjectFilePath, string platform)
         {
             // 1. Limpiar y obtener el directorio base del proyecto
-            // Entrada: "C:\...\SandBoxGame.Content.csproj"
+            // Entrada: "C:\...\YtbMusic.Content.csproj"
             string projectBaseDir = Path.GetDirectoryName(contentProjectFilePath);
 
             // Configuración (puedes pasarlo como parámetro si cambia entre Debug/Release)
@@ -215,20 +215,20 @@ namespace YotsubaEngine.Core.System.YotsubaEngineCore
             string targetFramework = "net10.0"; // Asegúrate de que coincida con tu .csproj
 
             // 2. Construir la ruta al ejecutable (La herramienta MGCB compilada)
-            // MSBuild: $(MSBuildThisFileDirectory)bin\$(Configuration)\net10.0\SandBoxGame.Content.exe
+            // MSBuild: $(MSBuildThisFileDirectory)bin\$(Configuration)\net10.0\YtbMusic.Content.exe
             string executablePath = Path.Combine(
                 projectBaseDir,
                 "bin",
                 configuration,
                 targetFramework,
-                "SandBoxGame.Content.exe" // Ojo: En Linux/Mac no lleva .exe
+                "YtbMusic.Content.exe" // Ojo: En Linux/Mac no lleva .exe
             );
 
             // Validación de seguridad
             if (!File.Exists(executablePath))
             {
                 EngineUISystem.SendLog($"[HotReload][ERROR] No se encontró la herramienta de contenido en: {executablePath}");
-                EngineUISystem.SendLog($"[HotReload][INFO] Asegúrate de haber compilado el proyecto SandBoxGame.Content al menos una vez.");
+                EngineUISystem.SendLog($"[HotReload][INFO] Asegúrate de haber compilado el proyecto YtbMusic.Content al menos una vez.");
                 return false;
             }
 
@@ -239,7 +239,7 @@ namespace YotsubaEngine.Core.System.YotsubaEngineCore
 
             // 4. Definir Rutas de Argumentos
             // Source: Relativo al Working Directory
-            string sourceDirectory = "SandBoxGame.Core/Assets";
+            string sourceDirectory = "YtbMusic.Core/Assets";
 
             // Output: Donde está corriendo ESTE juego ahora mismo
             string outputDirectory = AppDomain.CurrentDomain.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);

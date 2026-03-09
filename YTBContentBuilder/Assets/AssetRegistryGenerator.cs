@@ -21,7 +21,7 @@ namespace YotsubaEngine.YTBContentBuilder.Assets
             var sb = new StringBuilder();
             sb.AppendLine("using System.Collections.Generic;");
             sb.AppendLine();
-            sb.AppendLine("namespace SandBoxGame.Core");
+            sb.AppendLine("namespace YtbMusic.Core");
             sb.AppendLine("{");
             sb.AppendLine("    /// <summary>");
             sb.AppendLine("    /// Auto-generated class listing all game assets (textures and fonts).");
