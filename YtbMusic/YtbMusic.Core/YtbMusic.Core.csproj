@@ -17,6 +17,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ReproductorSonidos\ReproductorSonidos.csproj" />
     <ProjectReference Include="..\..\YotsubaEngine\YotsubaEngine.csproj" />
   </ItemGroup>
 </Project>

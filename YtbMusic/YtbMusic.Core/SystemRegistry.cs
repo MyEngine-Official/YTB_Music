@@ -8,7 +8,7 @@ namespace YtbMusic.Core
     {
         public void LoadAllCustomSystems()
         {
-            SystemBuilder.AddSystem<CustomExampleSystem>();
+            SystemBuilder.AddSystem<SoundSystem>();
         }
     }
 }

@@ -22,6 +22,9 @@
   <Folder Name="/Platforms/AssetBuilder/">
     <Project Path="YtbMusic.Content/YtbMusic.Content.csproj" />
   </Folder>
+  <Project Path="../ReproductorSonidos/ReproductorSonidos.csproj">
+    <BuildType Solution="YTB|*" Project="Release" />
+  </Project>
   <Project Path="YtbMusic.Core/YtbMusic.Core.csproj" />
 
 </Solution>

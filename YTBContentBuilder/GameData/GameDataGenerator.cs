@@ -17,14 +17,16 @@ namespace YotsubaEngine.YTBContentBuilder.GameData
         {
             string gameFilePath = Path.Combine(assetsPath, GameConfigFolder, GameFileName);
             string configFilePath = Path.Combine(assetsPath, GameConfigFolder, ConfigFileName);
-
             if (!File.Exists(gameFilePath))
             {
                 Console.WriteLine($"[GameDataGenerator] Game file not found: {gameFilePath}. Skipping.");
                 return;
             }
 
-            var sb = new StringBuilder();
+            if (String.IsNullOrEmpty(File.ReadAllText(gameFilePath)))
+                return;
+
+                var sb = new StringBuilder();
             sb.AppendLine("using System;");
             sb.AppendLine("using System.Collections.Generic;");
             sb.AppendLine("using YotsubaEngine.ActionFiles.YTB_Files;");
