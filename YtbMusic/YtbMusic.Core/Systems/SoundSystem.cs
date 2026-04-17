@@ -23,8 +23,13 @@ namespace YtbMusic.Core.Systems
         byte[] _byteBuffer;
         const int SampleRate = 44100;
         const int BufferSize = 4096; // samples por canal
+        SpriteFont _font;
+        char[] musicCharacters = ['\uE014',/* '\uE051', */'\uE014', '\uE014', '\uE014', '\uE014' ,'\uE014', '\uE014'];
+
         public override void InitializeSystem(EntityManager entities)
         {
+            //test
+            //endtest
             ReproductorSF2 = new ReproductorSF2();
             EntityManager = entities;
 
@@ -38,6 +43,8 @@ namespace YtbMusic.Core.Systems
             ReproductorSF2.TocarNota(0, 40, 120);
             ReproductorSF2.TocarNota(0, 44, 100);
             ReproductorSF2.TocarNota(0, 47, 90);
+            ReproductorSF2.DetenerTodo(false);
+            _font = YTBGlobalState.ContentManager.Load<SpriteFont>("Fonts/music");
         }
 
         void OnBufferNeeded(object sender, EventArgs e)
@@ -70,11 +77,27 @@ namespace YtbMusic.Core.Systems
             
 
         }
+        RasterizerState rasterizerState = new RasterizerState();
 
 
         #region Los metodos de renderizado se ejecutan una vez por frame y despues de todos los demas metodos
         public override void Render2D(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            spriteBatch.Begin();
+
+            int i = 0;
+            while (i < 20) 
+            {
+                spriteBatch.DrawString(_font, musicCharacters[0].ToString(), new Vector2(20 + i * 60, 300), Color.White);
+                i++;
+            }
+
+            spriteBatch.DrawString(_font, "\uE030", new Vector2(300, 300), Color.White);
+            spriteBatch.DrawString(_font, "\uE030", new Vector2(600, 300), Color.White);
+            spriteBatch.DrawString(_font, "\uE030", new Vector2(900, 300), Color.White);
+            spriteBatch.DrawString(_font, "\uE030", new Vector2(1200, 300), Color.White);
+
+            spriteBatch.End();
             //throw new NotImplementedException();
         }
 
@@ -91,5 +114,3 @@ namespace YtbMusic.Core.Systems
 
     }
 }
-
-

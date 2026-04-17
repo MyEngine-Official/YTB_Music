@@ -18,6 +18,7 @@ namespace YtbMusic.Core
         {
             "Fonts/font",
             "Fonts/Hud",
+            "Fonts/music",
         };
     }
 }

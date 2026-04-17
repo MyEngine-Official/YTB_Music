@@ -45,6 +45,9 @@
 	  </None>
 	</ItemGroup>
 	<ItemGroup>
+	  <None Update="Fonts\Bravura.otf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 	

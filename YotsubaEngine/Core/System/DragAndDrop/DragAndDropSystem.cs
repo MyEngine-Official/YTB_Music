@@ -115,6 +115,7 @@ namespace YotsubaEngine.Core.System.YTBDragAndDrop
         public void EntityDrag(ref Yotsuba entity)
         {
 
+            if (EntityManager is null) return;
             var input = InputManager.Instance;
 
             var mouseState = input.Mouse.CurrentState;

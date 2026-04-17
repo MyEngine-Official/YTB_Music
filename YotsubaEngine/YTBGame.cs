@@ -193,9 +193,9 @@ if (IsDesktop)
                 var io = ImGui.GetIO();
                 io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
 
-                string outputFontsDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Fonts");
+                string outputFontsDir = "Fonts";
                 string fuentePrincipal = Path.Combine(outputFontsDir, "GeistPixel-Square.ttf");
-                string fuenteIconos = Path.Combine(outputFontsDir, "NerdFontsSymbolsOnly.ttf");
+                string fuenteIconos = Path.Combine(outputFontsDir, "Bravura.otf");
 
                 // ¡Validación de seguridad para evitar crashes de ImGui C++!
                 if (!File.Exists(fuentePrincipal))

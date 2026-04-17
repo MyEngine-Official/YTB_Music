@@ -20,4 +20,9 @@
     <ProjectReference Include="..\..\ReproductorSonidos\ReproductorSonidos.csproj" />
     <ProjectReference Include="..\..\YotsubaEngine\YotsubaEngine.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Assets\Fonts\Bravura.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
